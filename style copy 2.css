@@ -1,0 +1,123 @@
+/* Base styling */
+body {
+  font-family: "Press Start 2P", sans-serif;
+  background-color: #000;
+  color: #00ff00; /* Neon green text color */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header styling */
+.header {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  width: 100%;
+  border-bottom: 2px solid #00ff00;
+}
+
+.header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.header p {
+  font-size: 0.9em;
+  margin: 10px 0 0;
+}
+
+/* Container for the timeline */
+.timeline-container {
+  width: 60%; /* Adjust width as needed */
+  margin-top: 50px; /* Move the timeline down */
+  padding: 0 20%; /* Leave 20% space on each side */
+  overflow: hidden; /* Prevent the container from scrolling */
+}
+
+/* Timeline styling */
+.timeline {
+  --timeline-color: #00ff00; /* Neon green */
+  position: relative;
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  height: 240px; /* Adjust height to fit timeline */
+}
+
+/* Middle line */
+.timeline:before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  width: 100%;
+  height: 2px;
+  background: var(--timeline-color);
+}
+
+/* Timeline items */
+.timeline li {
+  margin: 0 20px;
+  min-width: 200px;
+  align-self: flex-start;
+  position: relative;
+}
+
+/* Event styling */
+.timeline div {
+  position: relative;
+  padding: 10px;
+  border: 2px solid var(--timeline-color); /* Neon green border */
+  background: #111; /* Dark background for events */
+  box-shadow: 0px 0px 10px var(--timeline-color); /* Neon glow */
+  font-size: ;
+}
+
+/* Event dot (circle) */
+.timeline li:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-left: 100px;
+  transform: translate(-50%, -50%);
+  border: 1px var(--timeline-color) solid; /* Neon green border for dot */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Circle shape */
+  background: var(--timeline-color); /* Neon green fill for dot */
+  box-shadow: 0px 0px 5px var(--timeline-color); /* Glow effect on dot */
+}
+
+/* Event arrow */
+.timeline div:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -1px) rotate(45deg);
+  background: #111;
+  border-right: 2px solid var(--timeline-color); /* Neon green arrow border */
+  border-bottom: 2px solid var(--timeline-color); /* Neon green arrow border */
+}
+
+/* Position of the event arrow in odd position */
+.timeline li:nth-child(2n - 1) div:before {
+  top: 100%;
+  margin-top: -8px;
+  border-right: 1px var(--timeline-color) solid;
+  border-bottom: 1px var(--timeline-color) solid;
+}
+
+/* Position of the event arrow in even position */
+.timeline li:nth-child(2n) div:before {
+  top: 0;
+  margin-top: -10px;
+  border-left: 1px var(--timeline-color) solid;
+  border-top: 1px var(--timeline-color) solid;
+}
