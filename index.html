@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -7,6 +8,7 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
         <title>The History of Browser Flash Games</title>
     </head>
     <body>
@@ -18,9 +20,15 @@
             </p>
         </header>
 
-        <div class="timeline-container">
+        <div class="button-container">
+            <button id="reveal-button" class="custom-button">
+                Reveal Timeline
+            </button>
+        </div>
+
+        <div id="timeline-container" class="timeline-container hidden">
             <div class="timeline">
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">1996</div>
                     <div class="timeline-content">
                         <h2>The Birth of Flash</h2>
@@ -32,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">2000</div>
                     <div class="timeline-content">
                         <h2>Newgrounds Launches</h2>
@@ -43,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">2001</div>
                     <div class="timeline-content">
                         <h2>Miniclip Emerges</h2>
@@ -54,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">2004</div>
                     <div class="timeline-content">
                         <h2>Armor Games Takes The Stage</h2>
@@ -65,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">2006</div>
                     <div class="timeline-content">
                         <h2>Kongregate Arrives</h2>
@@ -76,19 +84,19 @@
                     </div>
                 </div>
 
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">2007</div>
                     <div class="timeline-content">
                         <h2>Social Gaming Emerges</h2>
                         <p>
                             Facebook incorporates flash games into their site,
                             encouraging users to play games where they interact
-                            with their friends
+                            with their friends.
                         </p>
                     </div>
                 </div>
 
-                <div class="timeline-event" data-aos="fade-up">
+                <div class="timeline-event">
                     <div class="timeline-date">2008</div>
                     <div class="timeline-content">
                         <h2>Tower Defense Craze</h2>
@@ -97,15 +105,16 @@
                         </p>
                     </div>
                 </div>
+
+                <a id="timeTravelButton" class="custom-button" href="#">
+                    Secret Time-Travel Button --- Experience the Past!
+                </a>
+
+                <div id="leftAd" class="ad left hidden"></div>
+                <div id="rightAd" class="ad right hidden"></div>
             </div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script>
-            AOS.init({
-                duration: 5000, // Customize duration for animation
-                easing: "ease-in-out", // Customize easing function
-            });
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>
