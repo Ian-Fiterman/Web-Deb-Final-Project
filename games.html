@@ -7,11 +7,11 @@
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="games.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
         <title>Play Flash Game Classics</title>
     </head>
-    <body>
+    <body class="games-page"> <!-- Add the class 'games-page' here -->
         <header class="header">
             <h1>Play Flash Game Classics</h1>
             <p>Choose a classic game site to play your favorite titles!</p>
@@ -26,45 +26,66 @@
                 ></iframe>
             </div>
 
-            <div class="games-container">
-                <button
-                    class="custom-button game-button"
-                    onclick="loadGame('https://www.newgrounds.com/games/featured')"
-                >
-                    Newgrounds
-                </button>
-                <button
-                    class="custom-button game-button"
-                    onclick="loadGame('https://www.nitrome.com/html5-games/')"
-                >
-                    Nitrome
-                </button>
-                <button
-                    class="custom-button game-button"
-                    onclick="loadGame('https://html5games.com/')"
-                >
-                    HTML5 Games
-                </button>
-                <button
-                    class="custom-button game-button"
-                    onclick="loadGame('https://armorgames.com/black-game/18545?fp=b-all')"
-                >
-                    Armor Games
-                </button>
-                <button
-                    class="custom-button game-button"
-                    onclick="loadGame('https://www.crazygames.com/')"
-                >
-                    Crazy Games
-                </button>
-                <a class="custom-button" href="index.html">
-                    Back to Home
-                </a>
+            <div class="button-columns">
+                <!-- Left Column -->
+                <div class="button-column">
+                    <h2>Change Game in View</h2>
+                    <button
+                        class="custom-button"
+                        onclick="loadGame('https://www.onlinegames.io/')"
+                    >
+                        OnlineGames.io
+                    </button>
+                    <button
+                        class="custom-button"
+                        onclick="loadGame('https://www.freeonlinegames.com/')"
+                    >
+                        Free Online Games
+                    </button>
+                    <button
+                        class="custom-button"
+                        onclick="loadGame('https://html5games.com/')"
+                    >
+                        HTML5 Games
+                    </button>
+                    <button
+                        class="custom-button"
+                        onclick="loadGame('https://1000webgames.com/')"
+                    >
+                        1000 Web games
+                    </button>
+                </div>
+
+                <!-- Right Column -->
+                <div class="button-column">
+                    <h2>Classic Flash Sites</h2>
+                    <button class="custom-button" onclick="window.open('https://www.miniclip.com/', '_blank')">
+                        Miniclip
+                    </button>
+                    <button class="custom-button" onclick="window.open('https://www.kongregate.com/', '_blank')">
+                        Kongregate
+                    </button>
+                    <button class="custom-button" onclick="window.open('https://www.kongregate.com/', '_blank')'">
+                        Armor Games
+                    </button>
+                    <button class="custom-button" onclick="window.open('https://www.kongregate.com/', '_blank')'">
+                        Newgrounds
+                    </button>
+                </div>
             </div>
+
+            <!-- Go Back Button -->
+            <a class="custom-button go-back" href="index.html">Back to Home</a>
         </div>
 
-        <div id="leftAd" class="ad left hidden"></div>
-        <div id="rightAd" class="ad right hidden"></div>
+        <div id="leftAd" class="ad left">
+            <p></p>
+            <button class="close-button" onclick="closeButtonClicked(document.getElementById('leftAd'))">×</button>
+        </div>
+        <div id="rightAd" class="ad right">
+            <p></p>
+            <button class="close-button" onclick="closeButtonClicked(document.getElementById('rightAd'))">×</button>
+        </div>
 
         <script src="script.js"></script>
     </body>
