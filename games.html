@@ -14,7 +14,10 @@
     <body class="games-page">
         <header class="header">
             <h1>Play Flash and HTML5 Game Classics</h1>
-            <p>Choose a modern browser game site to play on this page or explore classic Flash game sites and enjoy your favorite titles!</p>
+            <p>
+                Choose a modern browser game site to play on this page or
+                explore classic Flash game sites and enjoy your favorite titles!
+            </p>
         </header>
 
         <div class="content-container">
@@ -58,16 +61,28 @@
 
                 <div class="button-column">
                     <h2>Classic Flash Sites</h2>
-                    <button class="custom-button" onclick="window.open('https://www.miniclip.com/', '_blank')">
+                    <button
+                        class="custom-button"
+                        onclick="window.open('https://www.miniclip.com/', '_blank')"
+                    >
                         Miniclip
                     </button>
-                    <button class="custom-button" onclick="window.open('https://www.kongregate.com/', '_blank')">
+                    <button
+                        class="custom-button"
+                        onclick="window.open('https://www.kongregate.com/', '_blank')"
+                    >
                         Kongregate
                     </button>
-                    <button class="custom-button" onclick="window.open('https://www.kongregate.com/', '_blank')">
+                    <button
+                        class="custom-button"
+                        onclick="window.open('https://www.kongregate.com/', '_blank')"
+                    >
                         Armor Games
                     </button>
-                    <button class="custom-button" onclick="window.open('https://www.kongregate.com/', '_blank')">
+                    <button
+                        class="custom-button"
+                        onclick="window.open('https://www.kongregate.com/', '_blank')"
+                    >
                         Newgrounds
                     </button>
                 </div>
@@ -78,11 +93,15 @@
 
         <div id="left-ad" class="ad left">
             <p></p>
-            <button class="close-button" onclick="closeButtonClicked(document.getElementById('left-ad'))">×</button>
+            <button class="close-button" onclick="handleClick(this)">
+                ×
+            </button>
         </div>
         <div id="right-ad" class="ad right">
             <p></p>
-            <button class="close-button" onclick="closeButtonClicked(document.getElementById('right-ad'))">×</button>
+            <button class="close-button" onclick="handleClick(this)">
+                ×
+            </button>
         </div>
 
         <script src="script.js"></script>
