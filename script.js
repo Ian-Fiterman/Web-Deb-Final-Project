@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const leftAd = new Ad("left-ad");
-    const rightAd = new Ad("right-ad");
-    const adObjects = new Map([
-        ["left-ad", leftAd],
-        ["right-ad", rightAd],
-    ]);
+    const adObjects = {
+        "left-ad": new Ad("left-ad"),
+        "right-ad": new Ad("right-ad"),
+    };
     Object.defineProperty(window, "adObjects", {
         get: function () {
             return adObjects;
         },
     });
     if (window.location.href.includes("games.html")) {
-        leftAd.restyleAd();
-        rightAd.restyleAd();
+        for (const adId in adObjects) {
+            adObjects[adId].restyleAd();
+        }
     } else {
         const revealButton = document.getElementById("reveal-button");
         const timeTravelButton = document.getElementById("time-travel-button");
@@ -43,8 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
             } else if (clickedElement.id === "time-travel-button") {
                 if (!timeTravelButtonClickedBefore) {
-                    leftAd.revealAd();
-                    rightAd.revealAd();
+                    for (const adId in adObjects) {
+                        adObjects[adId].revealAd();
+                    }
                     timeTravelButtonClickedBefore = true;
                     timeTravelButton.textContent =
                         "It did say the past, didn't it? Just kidding! Click to go to the Games page, 4 realz th1s t1me!";
@@ -125,7 +125,7 @@ class Ad {
 }
 
 function handleClick(buttonElement) {
-    adObjects.get(buttonElement.parentElement.id).closeButtonClicked();
+    adObjects[buttonElement.parentElement.id].closeButtonClicked();
 }
 
 function createTimelineEvent(eventData) {
