@@ -1,42 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let timeTravelButtonClicked = false;
-    document.addEventListener("click", (event) => {
-        const clickedElement = event.target;
+    let leftAd = document.getElementById("left-ad");
+    let rightAd = document.getElementById("right-ad")
+    if (window.location.href.includes("games.html")) {
+        restyleAd(leftAd);
+        restyleAd(rightAd);
+    } else {
         const revealButton = document.getElementById("reveal-button");
-        const timeTravelButton = document.getElementById("timeTravelButton");
+        const timeTravelButton = document.getElementById("time-travel-button");
         const timelineContainer = document.getElementById("timeline-container");
-        if (clickedElement.id === "reveal-button") {
-            gsap.to(revealButton, {
-                opacity: 0,
-                duration: 0.5,
-                onComplete: () => {
-                    revealButton.style.display = "none";
-                    timelineContainer.classList.remove("hidden");
-                    animateTimelineEvents();
-                },
-            });
-        } else if (clickedElement.id === "timeTravelButton") {
-            if (!timeTravelButtonClicked) {
-                revealAd(leftAd);
-                revealAd(rightAd);
-                timeTravelButtonClicked = true;
-                timeTravelButton.textContent =
-                    "It did say the past, didn't it? Just kidding! Click to go to the Games page, 4 realz th1s t1me!";
-                timeTravelButton.setAttribute("href", "games.html");
-            } else {
-                window.location.href = "games.html";
+        let timeTravelButtonClickedBefore = false;
+        document.addEventListener("click", (event) => {
+            const clickedElement = event.target;
+            if (clickedElement.id === "reveal-button") {
+                fetch("timeline.json")
+                    .then((response) => response.json())
+                    .then((jsonDatabase) => {
+                        for (let i = 0; i < jsonDatabase.length; i++) {
+                            createTimelineEvent(jsonDatabase[i]);
+                        }
+                        gsap.to(revealButton, {
+                            opacity: 0,
+                            duration: 0.5,
+                            onComplete: () => {
+                                revealButton.style.display = "none";
+                                timelineContainer.classList.remove("hidden");
+                                animateTimelineEvents();
+                            },
+                        });
+                    })
+                    .catch((error) =>
+                        console.error("Error fetching timeline data:", error)
+                    );
+            } else if (clickedElement.id === "time-travel-button") {
+                if (!timeTravelButtonClickedBefore) {
+                    revealAd(leftAd);
+                    revealAd(rightAd);
+                    timeTravelButtonClickedBefore = true;
+                    timeTravelButton.textContent =
+                        "It did say the past, didn't it? Just kidding! Click to go to the Games page, 4 realz th1s t1me!";
+                } else {
+                    window.location.href = "games.html";
+                }
             }
-        }
-    });
+        });
+    }
 });
 
-if (window.location.href.includes("games.html")) {
-    restyleAd(leftAd);
-    restyleAd(rightAd);
+function createTimelineEvent(eventData) {
+    const timelineContainer = document.getElementById("timeline-container");
+    let eventElement = document.createElement("div");
+    eventElement.classList.add("timeline-event");
+    let dateElement = document.createElement("div");
+    dateElement.classList.add("timeline-date");
+    dateElement.innerText = eventData.date;
+    eventElement.appendChild(dateElement);
+    let contentContainer = document.createElement("div");
+    contentContainer.classList.add("timeline-content");
+    let titleElement = document.createElement("h2");
+    titleElement.innerText = eventData.title;
+    contentContainer.appendChild(titleElement);
+    let descriptionElement = document.createElement("p");
+    descriptionElement.innerText = eventData.description;
+    contentContainer.appendChild(descriptionElement);
+    eventElement.appendChild(contentContainer);
+    timelineContainer.appendChild(eventElement);
 }
 
 function animateTimelineEvents() {
     const timelineEvents = document.querySelectorAll(".timeline-event");
+    const timeTravelButton = document.getElementById("time-travel-button");
     gsap.fromTo(
         timelineEvents,
         {
@@ -62,10 +94,11 @@ function animateTimelineEvents() {
 }
 
 function randomColorCode() {
-    let rRand = Math.floor(Math.random() * 256);
-    let gRand = Math.floor(Math.random() * 256);
-    let bRand = Math.floor(Math.random() * 256);
-    return `rgb(${rRand}, ${gRand}, ${bRand})`;
+    return `rgb(${rand255()}, ${rand255()}, ${rand255()})`;
+}
+
+function rand255() {
+    return Math.floor(Math.random() * 256);
 }
 
 function restyleAd(adElement) {
@@ -82,7 +115,6 @@ function restyleAd(adElement) {
         "Introducing the product that doesn't exist... Send $€¥ to make it real!",
         "Congrats! You’ve just wasted 30 seconds of your life on this ad!",
     ];
-
     adElement.style.color = randomColorCode();
     adElement.style.backgroundColor = randomColorCode();
     adText.textContent = ads[Math.floor(Math.random() * ads.length)];
@@ -90,7 +122,7 @@ function restyleAd(adElement) {
 
 function revealAd(adElement) {
     adElement.classList.remove("hidden");
-    const xShift = adElement.id === "rightAd" ? "100%" : "-100%";
+    const xShift = adElement.id === "right-ad" ? "100%" : "-100%";
     gsap.fromTo(
         adElement,
         { x: xShift, opacity: 0 },
@@ -100,7 +132,7 @@ function revealAd(adElement) {
 }
 
 function hideAd(adElement) {
-    const xShift = adElement.id === "rightAd" ? "100%" : "-100%";
+    const xShift = adElement.id === "right-ad" ? "100%" : "-100%";
     gsap.fromTo(
         adElement,
         { x: "0%", opacity: 1 },

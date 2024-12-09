@@ -1,0 +1,82 @@
+[
+    {
+        "date": "1996",
+        "title": "The Birth of Flash",
+        "description": "Macromedia releases Flash (FutureSplash Animator), a tool for creating animations, which later evolves to include interactive features suitable for games."
+    },
+    {
+        "date": "1998",
+        "title": "Yahoo launches Yahoo Games",
+        "description": "Yahoo introduces Yahoo Games, one of the earliest platforms for hosting online games, including many Flash-based titles."
+    },
+    {
+        "date": "2000",
+        "title": "Newgrounds Emerges",
+        "description": "The first major platform for user-generated Flash games debuts, enabling creators to share their work and paving the way for an indie game revolution."
+    },
+    {
+        "date": "2001",
+        "title": "Miniclip Emerges",
+        "description": "Like Newgrounds, Miniclip greatly expands the online casual gaming space with a vast library of titles, quickly becoming a household name."
+    },
+    {
+        "date": "2004",
+        "title": "Alien Hominid and Flash Console Games",
+        "description": "Flash-originated games like 'Alien Hominid' demonstrate that browser games can transition to consoles, inspiring developers to dream bigger."
+    },
+    {
+        "date": "2005",
+        "title": "Adobe Acquires Flash",
+        "description": "Adobe acquires Macromedia, taking over Flash and its development. This marks a new era for Flash technology, solidifying its role in web animation and gaming."
+    },
+    {
+        "date": "2006",
+        "title": "Kongregate Emerges",
+        "description": "Combining games, achievements, and community features, Kongregate becomes a leading platform for Flash games, offering a space for players and developers alike."
+    },
+    {
+        "date": "2007",
+        "title": "Facebook launches Facebook Gaming",
+        "description": "Facebook integrates Flash games into its platform, launching social games like 'FarmVille' and 'Mafia Wars' which allowed users to interact with their friends through Flash games."
+    },
+    {
+        "date": "2008",
+        "title": "The Rise of YouTube Let's Plays",
+        "description": "YouTubers begin uploading 'Let's Plays' of Flash games like 'Happy Wheels' and 'The Impossible Quiz', boosting the popularity of Flash games among new audiences."
+    },
+    {
+        "date": "2009",
+        "title": "Fancy Pants Adventure and Platformer Revolution",
+        "description": "Flash games like 'Fancy Pants Adventure' set a new standard for platformers with smooth animations, charming art styles, and engaging mechanics."
+    },
+    {
+        "date": "2010",
+        "title": "The Tower Defense Craze Peaks",
+        "description": "'Bloons Tower Defense 4' refines the tower defense genre, skyrocketing in popularity and creating a new global community."
+    },
+    {
+        "date": "2011",
+        "title": "The Minecraft Effect",
+        "description": "Indie game success stories like 'Minecraft' inspire Flash developers to experiment with sandbox-style and survival gameplay, resulting in creations like 'The Sandbox' and 'Rebuild 2'."
+    },
+    {
+        "date": "2014",
+        "title": "HTML5 Gains Momentum",
+        "description": "HTML5 is finalized as a web standard, offering better performance, security, and mobile compatibility. Developers increasingly shift from Flash to HTML5 for creating interactive content and games."
+    },
+    {
+        "date": "2017",
+        "title": "Adobe Announces Flash's End",
+        "description": "Adobe officially declares it will end support for Flash by 2020, marking the beginning of the final chapter for Flash games."
+    },
+    {
+        "date": "2018",
+        "title": "Flash Games Enter Preservation",
+        "description": "Flash game repositories and preservation projects, like 'Flashpoint' by BlueMaxima, begin archiving Flash games in anticipation of the platform's decline."
+    },
+    {
+        "date": "2020",
+        "title": "The Death of Flash",
+        "description": "Flash support officially ends on December 31, 2020. Legacy platforms like 'Flashpoint' step up to preserve thousands of iconic Flash games for future generations."
+    }
+]
