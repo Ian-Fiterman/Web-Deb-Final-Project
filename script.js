@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-if (window.location.pathname === "/games.html") {
+if (window.location.href.includes("games.html")) {
     restyleAd(leftAd);
     restyleAd(rightAd);
 }
