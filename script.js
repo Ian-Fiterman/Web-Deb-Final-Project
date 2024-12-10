@@ -1,23 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const adObjects = {
-        "left-ad": new Ad("left-ad"),
-        "right-ad": new Ad("right-ad"),
-    };
+    const adObjects = new Map();
+    const adElements = document.querySelectorAll('.ad');
+    adElements.forEach(element => {
+        adObjects.set(element.id, new Ad(element));
+    });
     Object.defineProperty(window, "adObjects", {
         get: function () {
             return adObjects;
         },
     });
     if (window.location.href.includes("games.html")) {
-        for (const adId in adObjects) {
-            adObjects[adId].restyleAd();
-        }
+        adObjects.values().forEach(ad => ad.restyleAd());
     } else {
         const revealButton = document.getElementById("reveal-button");
         const timeTravelButton = document.getElementById("time-travel-button");
         const timelineContainer = document.getElementById("timeline-container");
         let timeTravelButtonClickedBefore = false;
-
         document.addEventListener("click", (event) => {
             const clickedElement = event.target;
             if (clickedElement.id === "reveal-button") {
@@ -42,9 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
             } else if (clickedElement.id === "time-travel-button") {
                 if (!timeTravelButtonClickedBefore) {
-                    for (const adId in adObjects) {
-                        adObjects[adId].revealAd();
-                    }
+                    adObjects.values().forEach(ad => ad.revealAd());
                     timeTravelButtonClickedBefore = true;
                     timeTravelButton.textContent =
                         "It did say the past, didn't it? Just kidding! Click to go to the Games page, 4 realz th1s t1me!";
@@ -57,8 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 class Ad {
-    constructor(elementId) {
-        this.element = document.getElementById(elementId);
+    constructor(element) {
+        this.element = element;
+        this.xshift = this.element.dataset.xshift;
+        this.adText = this.element.querySelector("p");
     }
 
     randomColorCode() {
@@ -70,7 +68,6 @@ class Ad {
     }
 
     restyleAd() {
-        const adText = this.element.querySelector("p");
         const ads = [
             "Buy 1 for the price of 2, get 1 free! (Limited Time Offer)",
             "Your computer has a virus... Oh wait, that's just us!",
@@ -85,27 +82,25 @@ class Ad {
         ];
         this.element.style.color = this.randomColorCode();
         this.element.style.backgroundColor = this.randomColorCode();
-        adText.textContent = ads[Math.floor(Math.random() * ads.length)];
+        this.adText.textContent = ads[Math.floor(Math.random() * ads.length)];
     }
 
     revealAd() {
         this.element.classList.remove("hidden");
-        const xShift = this.element.id === "right-ad" ? "100%" : "-100%";
         gsap.fromTo(
             this.element,
-            { x: xShift, opacity: 0 },
+            { x: this.xshift, opacity: 0 },
             { x: "0%", opacity: 1, duration: 1, ease: "power3.out" }
         );
         this.restyleAd();
     }
 
     hideAd() {
-        const xShift = this.element.id === "right-ad" ? "100%" : "-100%";
         gsap.fromTo(
             this.element,
             { x: "0%", opacity: 1 },
             {
-                x: xShift,
+                x: this.xshift,
                 opacity: 0,
                 duration: 1,
                 ease: "power3.out",
@@ -125,7 +120,7 @@ class Ad {
 }
 
 function handleClick(buttonElement) {
-    adObjects[buttonElement.parentElement.id].closeButtonClicked();
+    adObjects.get(buttonElement.parentElement.id).closeButtonClicked();
 }
 
 function createTimelineEvent(eventData) {
