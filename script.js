@@ -82,7 +82,7 @@ class Ad {
         ];
         const bgColor = this.randomColorCode();
         this.element.style.backgroundColor = bgColor;
-        this.element.style.boxShadow = `2px 2px 20px ${bgColor}`;
+        this.element.style.boxShadow = `0 0 20px ${bgColor}`;
         this.element.style.color = this.randomColorCode();
         this.adText.textContent = ads[Math.floor(Math.random() * ads.length)];
     }

@@ -52,6 +52,7 @@ body {
     bottom: 0;
     width: 2px;
     background-color: #2323ff;
+    box-shadow: 0 0 10px #2323ff;
 }
 
 .timeline-date {
@@ -133,7 +134,7 @@ body {
     font-size: 1em;
     color: #00ff00;
     background-color: #111;
-    box-shadow: 2px 2px 10px #00ff00;
+    box-shadow: 0 0 5px #00ff00;
     border: 2px solid #00ff00;
     padding: 10px 15px;
     border-radius: 5px;
@@ -156,6 +157,7 @@ button.close-button {
     top: 10px;
     right: 10px;
     border: none;
+    border-radius: 5px;
     font-size: 30px;
     color: white;
     cursor: pointer;
