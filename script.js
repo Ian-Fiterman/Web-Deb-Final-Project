@@ -80,8 +80,10 @@ class Ad {
             "Introducing the product that doesn't exist... Send $€¥ to make it real!",
             "Congrats! You’ve just wasted 30 seconds of your life on this ad!",
         ];
+        const bgColor = this.randomColorCode();
+        this.element.style.backgroundColor = bgColor;
+        this.element.style.boxShadow = `2px 2px 20px ${bgColor}`;
         this.element.style.color = this.randomColorCode();
-        this.element.style.backgroundColor = this.randomColorCode();
         this.adText.textContent = ads[Math.floor(Math.random() * ads.length)];
     }
 
